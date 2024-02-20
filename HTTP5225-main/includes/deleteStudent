@@ -1,0 +1,20 @@
+<?php
+if(isset($_POST['delete'])){
+    $id =$_GET['id']
+
+//Connection string
+include('../includes/connect.php');
+$query = "DELETE FROM students WHERE `id` = '$id'";
+//change grades on phpmyadmin and select 'null' to make it accept null values
+$student = mysqli_query($connect, $query);
+
+if($student){
+    header("Location:../index.php")
+    //echo "Success";
+}else{
+    echo "Failed: " . mysqli_error($connect);
+}
+}else{
+    echo "You should not be here"
+}
+?>
